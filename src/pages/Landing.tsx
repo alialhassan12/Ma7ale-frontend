@@ -1,8 +1,13 @@
+"use client";
 import Navbar from "@/components/public/Navbar";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, PlayCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const Landing = () => {
+    const router = useRouter();
+
+    
     return (
         <div>
             <Navbar />
@@ -19,7 +24,10 @@ const Landing = () => {
                         Manage your products, orders, and inventory. Share your storefront link and make it effortless for customers to order via WhatsApp without upfront platform fees.
                     </p>
                     <div className="flex flex-row items-center gap-4 justify-center mt-2">
-                        <Button className="bg-primary text-white  font-medium rounded-lg px-5 py-6 cursor-pointer">
+                        <Button
+                            onClick={()=>router.push('/signup')}
+                            className="bg-primary text-white  font-medium rounded-lg px-5 py-6 cursor-pointer"
+                        >
                             Get Started For Free <ArrowRight className="h-4 w-4" />
                         </Button>
                         <Button className="bg-card text-foreground rounded-lg px-5 py-6 cursor-pointer hover:bg-foreground/10">

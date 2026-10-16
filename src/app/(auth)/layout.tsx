@@ -1,3 +1,7 @@
+'use client';
+
+import { useAuth } from "@/hooks/useAuth";
+import { redirect } from "next/navigation";
 import { ReactNode } from "react";
 
 const AuthLayout = ({
@@ -5,6 +9,15 @@ const AuthLayout = ({
 }:{
     children:ReactNode
 }) =>{
+    const {
+        data:user,
+        isError,
+    }=useAuth();
+
+    if(!isError && user){
+        return redirect("/home");
+    }
+
     return children;
 }
 
