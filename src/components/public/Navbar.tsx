@@ -47,7 +47,7 @@ const Navbar = () => {
             </div>
             <div className="flex flex-row items-center gap-4">
                 <ThemeToggle />
-                <a href="" className="text-md font-medium hover:text-primary transition-colors">Login</a>
+                <a href="/login" className="text-md font-medium hover:text-primary transition-colors">Login</a>
                 <Button
                     onClick={()=>router.push('/signup')}
                     className="bg-primary text-white font-medium rounded-lg px-5 py-4 cursor-pointer"

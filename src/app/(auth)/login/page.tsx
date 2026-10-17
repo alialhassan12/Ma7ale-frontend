@@ -1,9 +1,9 @@
-const Login = ()=>{
+import Login from "@/pages/AuthPages/Login";
+
+const LoginPage = ()=>{
     return(
-        <div>
-            <h1>Login</h1>
-        </div>
+        <Login/>
     )
 }
 
-export default Login;
+export default LoginPage;
