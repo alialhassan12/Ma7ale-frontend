@@ -71,9 +71,13 @@ function OAuthCallbackContent() {
                     description: "Signed in successfully with Google.",
                 });
 
-                // 4. Navigate to home
+                // 4. Navigate based on onboarding status
                 setTimeout(() => {
-                    router.replace("/home");
+                    if (userData?.onboarding_completed) {
+                        router.replace("/home");
+                    } else {
+                        router.replace("/onboarding");
+                    }
                 }, 600);
 
             } catch (err: any) {

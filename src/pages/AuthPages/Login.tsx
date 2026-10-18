@@ -38,14 +38,21 @@ const Login =()=>{
 
     const onSubmit=async(data:LoginFormData)=>{
         try {
-            await login(data);
+            const user=await login(data);
             toast.add({
                 type:"success",
                 title:"Success",
                 description:"Login successful"
             });
 
-            router.push("/home");
+            console.log("user",user);
+
+            if(user?.onboarding_completed){
+                router.push("/home");
+            }else{
+                router.push("/onboarding");
+            }
+
         } catch (error:any) {
             toast.add({
                 type:"error",
@@ -58,6 +65,7 @@ const Login =()=>{
     const handleGoogleLogin=async()=>{
         try {
             await redirectToGoogle();
+            
         } catch (error:any) {
             toast.add({
                 type:"error",
@@ -75,7 +83,7 @@ const Login =()=>{
                     {/* Header */}
                     <div className="space-y-6">
                         <div className="flex flex-wrap items-center justify-between gap-3">
-                            <div>
+                            <div className="cursor-pointer" onClick={()=>router.push("/")}>
                                 <Image
                                     src={Lightlogo}
                                     alt="Logo"

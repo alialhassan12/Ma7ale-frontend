@@ -14,12 +14,12 @@ import { useMemo, useState } from "react";
 import { Check, Eye, EyeClosed, Loader2 } from "lucide-react";
 import { useRedirectToGoogle, useSignUp } from "@/hooks/useAuth";
 import { toast } from "@/components/ui/toast";
-import { useRouter } from "next/router";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import ThemeToggle from "@/components/ThemeToggle";
 
 
 const SignUp=()=>{
+    const router = useRouter();
     const [showPassowrd,setShowPassword]=useState<boolean>(false);
     const [showPassowrdConfirm,setShowPasswordConfirm]=useState<boolean>(false);
 
@@ -46,13 +46,15 @@ const SignUp=()=>{
 
     const onSubmit=async(data:SignUpFormData)=>{
         try {
-            await signup(data);
+            const user=await signup(data);
             toast.add({
                 type:'success',
                 title:'Success',
                 description:'Account created successfully!',
             });
-            redirect("/home");
+
+            router.push("/onboarding");
+            
         } catch (error:any) {
             toast.add({
                 type:'error',
@@ -131,7 +133,7 @@ const SignUp=()=>{
                     {/* Header */}
                     <div className="space-y-6">
                         <div className="flex flex-wrap items-center justify-between gap-3">
-                            <div>
+                            <div className="cursor-pointer" onClick={()=>router.push("/")}>
                                 <Image
                                     src={Lightlogo}
                                     alt="Logo"
