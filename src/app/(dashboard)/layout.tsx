@@ -29,10 +29,6 @@ const DashboardLayout = ({
         return redirect("/");
     }
 
-    if(!user.onboarding_completed){
-        return redirect("/onboarding");
-    }
-
     return children;
 }
 
