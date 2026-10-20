@@ -45,10 +45,8 @@ const Login =()=>{
                 description:"Login successful"
             });
 
-            console.log("user",user);
-
             if(user?.onboarding_completed){
-                router.push("/home");
+                router.push("/dashboard");
             }else{
                 router.push("/onboarding");
             }

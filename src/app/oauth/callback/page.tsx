@@ -74,7 +74,7 @@ function OAuthCallbackContent() {
                 // 4. Navigate based on onboarding status
                 setTimeout(() => {
                     if (userData?.onboarding_completed) {
-                        router.replace("/home");
+                        router.replace("/dashboard");
                     } else {
                         router.replace("/onboarding");
                     }

@@ -1,7 +1,7 @@
 import User from "@/@types/user";
 import { LoginFormData } from "@/schemas/loginSchema";
 import { SignUpFormData } from "@/schemas/signupSchema";
-import { checkAuth, login, redirectToGoogle, signUp } from "@/services/authService";
+import { checkAuth, login, logout, redirectToGoogle, signUp } from "@/services/authService";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 
 export const authKeys={
@@ -50,6 +50,17 @@ export const useRedirectToGoogle=()=>{
         },
         onError:(error:any)=>{
             console.error(error);
+        }
+    })
+}
+
+export const useLogout=()=>{
+    const queryClient=useQueryClient();
+
+    return useMutation({
+        mutationFn:()=>logout(),
+        onSuccess:()=>{
+            queryClient.removeQueries({queryKey:authKeys.all});
         }
     })
 }

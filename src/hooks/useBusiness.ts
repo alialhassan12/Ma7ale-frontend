@@ -1,9 +1,9 @@
 import { Business } from "@/@types/business";
-import { createBusiness } from "@/services/BusinessService";
-import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { createBusiness, getBusinesses } from "@/services/BusinessService";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 
 export const businessKeys={
-    all:["business"]
+    all:["businesses"],
 }
 
 export const useCreateBusiness=()=>{
@@ -15,4 +15,11 @@ export const useCreateBusiness=()=>{
             queryClient.invalidateQueries({ queryKey: businessKeys.all });
         },
     });
+}
+
+export const useGetBusinesses=()=>{
+    return useQuery({
+        queryKey: businessKeys.all,
+        queryFn: getBusinesses,
+    })
 }

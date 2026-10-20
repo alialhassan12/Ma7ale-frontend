@@ -50,3 +50,13 @@ export const redirectToGoogle=async()=>{
         throw error?.response?.data?.message || "Something went wrong";
     }
 }
+
+export const logout=async()=>{
+    try {
+        await axiosInstance.post('/auth/logout');
+        localStorage.removeItem("auth_token");
+        localStorage.removeItem("user");
+    } catch (error:any) {
+        throw error?.response?.data?.message || "Something went wrong";
+    }
+}

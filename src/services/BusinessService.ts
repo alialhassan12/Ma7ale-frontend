@@ -9,3 +9,14 @@ export const createBusiness=async(data:Business)=>{
         throw error.response?.data?.message || "Failed to create business";
     }
 }
+
+export const getBusinesses=async()=>{
+    try{
+        const response=await axiosInstance.get("/businesses");
+        return response.data;
+    }catch(error:any){
+        console.log(error.response);
+        throw error.response?.data?.message || "Failed to fetch businesses";
+        
+    }
+}

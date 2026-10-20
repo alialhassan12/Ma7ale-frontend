@@ -18,7 +18,7 @@ const OnboardingLayout=({children}:{
     }
     
     if(user.onboarding_completed){
-        return redirect("/home");
+        return redirect("/dashboard");
     }
     
     return children;

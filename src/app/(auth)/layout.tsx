@@ -15,7 +15,7 @@ const AuthLayout = ({
     }=useAuth();
 
     if(!isError && user){
-        return redirect(user.onboarding_completed ? "/home" : "/onboarding");
+        return redirect(user.onboarding_completed ? "/dashboard" : "/onboarding");
     }
 
     return children;

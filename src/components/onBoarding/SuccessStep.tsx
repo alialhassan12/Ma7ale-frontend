@@ -66,7 +66,7 @@ const SuccessStep =()=>{
 
                 <Button
                     variant="outline"
-                    onClick={()=>router.replace("/home")}
+                    onClick={()=>router.replace("/dashboard")}
                     className={"flex flex-row items-center w-full h-12 cursor-pointer"}
                 >
                     <LayoutDashboard/>
