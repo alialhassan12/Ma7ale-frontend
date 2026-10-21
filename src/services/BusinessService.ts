@@ -10,9 +10,9 @@ export const createBusiness=async(data:Business)=>{
     }
 }
 
-export const getBusinesses=async()=>{
+export const getBusinesses=async(page:number=1,search:string="",filter?:string)=>{
     try{
-        const response=await axiosInstance.get("/businesses");
+        const response=await axiosInstance.get(`/businesses?page=${page}&search=${search}&filter=${filter}`);
         return response.data;
     }catch(error:any){
         console.log(error.response);

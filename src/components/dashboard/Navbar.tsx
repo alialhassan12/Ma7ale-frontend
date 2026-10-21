@@ -14,7 +14,6 @@ const Navbar=()=>{
     const router=useRouter();
     const {data:user}=useAuth();
     const {mutateAsync:logout}=useLogout();
-    const [openDropdown,setOpenDropdown]=useState<boolean>(false);
 
         const handleLogout=async()=>{
         try {
@@ -28,7 +27,12 @@ const Navbar=()=>{
     return (
         <nav className="sticky top-0 flex flex-row justify-between items-center px-8 py-4 border-b border-border shadow-sm backdrop-blur-sm">
             {/* logo and links */}
-            <div className="flex flex-row items-center gap-2">
+            <div 
+                className="flex flex-row items-center gap-2 cursor-pointer"
+                onClick={()=>{
+                    router.push("/");
+                }}
+            >
                 {/* logo */}
                 <Image
                     src={logo}

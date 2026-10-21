@@ -4,6 +4,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 
 export const businessKeys={
     all:["businesses"],
+    list:(page:number=1,search:string="",filter:string="")=>(["businesses","list",page,search,filter])
 }
 
 export const useCreateBusiness=()=>{
@@ -17,9 +18,9 @@ export const useCreateBusiness=()=>{
     });
 }
 
-export const useGetBusinesses=()=>{
+export const useGetBusinesses=(page:number=1,search:string="",filter:string="")=>{
     return useQuery({
-        queryKey: businessKeys.all,
-        queryFn: getBusinesses,
+        queryKey: businessKeys.list(page,search,filter),
+        queryFn: ()=>getBusinesses(page,search,filter),
     })
 }
